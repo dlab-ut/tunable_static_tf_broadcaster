@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="velodyne_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" output="screen">
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="velodyne" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/velodyne.yaml" type="string" /> 
+  </node>
+
+  <!-- <node name="front_left_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="laser_front_left" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+  </node>
+
+  <node name="front_right_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="laser_front_right" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+  </node>
+
+  <node name="rear_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="laser_rear" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+  </node>
+
+  <node name="center_camera_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="center_camera" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+  </node>
+
+  <node name="left_camera_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="center_camera" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+  </node>
+
+  <node name="right_camera_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+    <param name="rate" value="10.0" type="double" /> 
+    <param name="header_frame" value="base_link" type="string" /> 
+    <param name="child_frame" value="right_camera" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+  </node> -->
+
+  <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
+
+  <!-- <node name="load_base_link" pkg="dynamic_reconfigure" type="dynparam" args="load base_link $(find tunable_static_tf_broadcaster)/params/base_link.yaml" /> -->
+  <!-- <node name="load_velodyne" pkg="dynamic_reconfigure" type="dynparam" args="load velodyne $(find tunable_static_tf_broadcaster)/params/velodyne.yaml" /> -->
+
+</launch>
