@@ -1,57 +1,68 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="model" default="$(find yp_robot_config)/urdf/tsukutsuku.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
   <node name="velodyne_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" output="screen">
-    <param name="rate" value="10.0" type="double" /> 
-    <param name="header_frame" value="base_link" type="string" /> 
-    <param name="child_frame" value="velodyne" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/velodyne.yaml" type="string" /> 
+    <param name="rate" value="10.0" type="double" />
+    <param name="header_frame" value="base_link" type="string" />
+    <param name="child_frame" value="velodyne" type="string" />
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne.yaml" type="string" />
   </node>
 
-  <!-- <node name="front_left_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
+  <node name="front_left_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
     <param name="rate" value="10.0" type="double" /> 
     <param name="header_frame" value="base_link" type="string" /> 
     <param name="child_frame" value="laser_front_left" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/front_left_urg.yaml" type="string" /> 
   </node>
 
   <node name="front_right_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
     <param name="rate" value="10.0" type="double" /> 
     <param name="header_frame" value="base_link" type="string" /> 
     <param name="child_frame" value="laser_front_right" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/front_right_urg.yaml" type="string" /> 
   </node>
 
   <node name="rear_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
     <param name="rate" value="10.0" type="double" /> 
     <param name="header_frame" value="base_link" type="string" /> 
     <param name="child_frame" value="laser_rear" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/rear_urg.yaml" type="string" /> 
   </node>
 
   <node name="center_camera_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
     <param name="rate" value="10.0" type="double" /> 
     <param name="header_frame" value="base_link" type="string" /> 
     <param name="child_frame" value="center_camera" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/center_camera.yaml" type="string" /> 
   </node>
 
   <node name="left_camera_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
     <param name="rate" value="10.0" type="double" /> 
     <param name="header_frame" value="base_link" type="string" /> 
     <param name="child_frame" value="center_camera" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/left_camera.yaml" type="string" /> 
   </node>
 
   <node name="right_camera_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
     <param name="rate" value="10.0" type="double" /> 
     <param name="header_frame" value="base_link" type="string" /> 
     <param name="child_frame" value="right_camera" type="string" /> 
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/arm.yaml" type="string" /> 
-  </node> -->
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/right_camera.yaml" type="string" /> 
+  </node>
 
   <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
 
   <!-- <node name="load_base_link" pkg="dynamic_reconfigure" type="dynparam" args="load base_link $(find tunable_static_tf_broadcaster)/params/base_link.yaml" /> -->
-  <!-- <node name="load_velodyne" pkg="dynamic_reconfigure" type="dynparam" args="load velodyne $(find tunable_static_tf_broadcaster)/params/velodyne.yaml" /> -->
+  <node name="load_velodyne" pkg="dynamic_reconfigure" type="dynparam" args="load velodyne $(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne.yaml" />
+  <node name="load_front_left_urg" pkg="dynamic_reconfigure" type="dynparam" args="load front_left_urg $(find tunable_static_tf_broadcaster)/params/tsukutsuku/front_left_urg.yaml" />
+  <node name="load_front_right_urg" pkg="dynamic_reconfigure" type="dynparam" args="load front_right_urg $(find tunable_static_tf_broadcaster)/params/tsukutsuku/front_right_urg.yaml" />
+  <node name="load_rear_urg" pkg="dynamic_reconfigure" type="dynparam" args="load rear_urg $(find tunable_static_tf_broadcaster)/params/tsukutsuku/rear_urg.yaml" />
+  <node name="load_center_camera" pkg="dynamic_reconfigure" type="dynparam" args="load center_camera $(find tunable_static_tf_broadcaster)/params/tsukutsuku/center_camera.yaml" />
+  <node name="load_left_camera" pkg="dynamic_reconfigure" type="dynparam" args="load left_camera $(find tunable_static_tf_broadcaster)/params/tsukutsuku/left_camera.yaml" />
+  <node name="load_right_camera" pkg="dynamic_reconfigure" type="dynparam" args="load right_camera $(find tunable_static_tf_broadcaster)/params/tsukutsuku/right_camera.yaml" />
 
 </launch>
