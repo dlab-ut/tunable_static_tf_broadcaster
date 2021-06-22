@@ -12,16 +12,16 @@ dictitems:
       state: true
       tf_pitch: 0.0
       tf_roll: 0.0
-      tf_x: 1.0
-      tf_y: 0.0
+      tf_x: 0.69
+      tf_y: -0.12632937844610817
       tf_yaw: 0.0
-      tf_z: 1.0
+      tf_z: 0.156
       type: ''
     state: []
   tf_pitch: 0.0
   tf_roll: 0.0
-  tf_x: 1.0
-  tf_y: 0.0
+  tf_x: 0.69
+  tf_y: -0.12632937844610817
   tf_yaw: 0.0
-  tf_z: 1.0
+  tf_z: 0.156
 state: []
