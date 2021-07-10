@@ -33,11 +33,18 @@
     <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/right_wheel.yaml" type="string" />
   </node> -->
 
-  <node name="velodyne_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" output="screen">
+  <node name="velodyne_upper_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" output="screen">
     <param name="rate" value="10.0" type="double" />
     <param name="header_frame" value="base_link" type="string" />
-    <param name="child_frame" value="velodyne" type="string" />
-    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne.yaml" type="string" />
+    <param name="child_frame" value="velodyne_upper" type="string" />
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne_upper.yaml" type="string" />
+  </node>
+
+  <node name="velodyne_lower_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" output="screen">
+    <param name="rate" value="10.0" type="double" />
+    <param name="header_frame" value="base_link" type="string" />
+    <param name="child_frame" value="velodyne_lower" type="string" />
+    <param name="yaml" value="$(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne_lower.yaml" type="string" />
   </node>
 
   <node name="front_left_urg_tunable_broadcaster" pkg="tunable_static_tf_broadcaster" type="tunable_static_tf_broadcaster_node.py" >
@@ -95,7 +102,8 @@
   <node name="load_caster_link" pkg="dynamic_reconfigure" type="dynparam" args="load caster_link $(find tunable_static_tf_broadcaster)/params/tsukutsuku/caster_link.yaml" />
   <node name="load_left_wheel" pkg="dynamic_reconfigure" type="dynparam" args="load left_wheel $(find tunable_static_tf_broadcaster)/params/tsukutsuku/left_wheel.yaml" />
   <node name="load_right_wheel" pkg="dynamic_reconfigure" type="dynparam" args="load right_wheel $(find tunable_static_tf_broadcaster)/params/tsukutsuku/right_wheel.yaml" />
-  <node name="load_velodyne" pkg="dynamic_reconfigure" type="dynparam" args="load velodyne $(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne.yaml" />
+  <node name="load_velodyne_upper" pkg="dynamic_reconfigure" type="dynparam" args="load velodyne_upper $(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne_upper.yaml" />
+  <node name="load_velodyne_lower" pkg="dynamic_reconfigure" type="dynparam" args="load velodyne_lower $(find tunable_static_tf_broadcaster)/params/tsukutsuku/velodyne_lower.yaml" />
   <node name="load_front_left_urg" pkg="dynamic_reconfigure" type="dynparam" args="load front_left_urg $(find tunable_static_tf_broadcaster)/params/tsukutsuku/front_left_urg.yaml" />
   <node name="load_front_right_urg" pkg="dynamic_reconfigure" type="dynparam" args="load front_right_urg $(find tunable_static_tf_broadcaster)/params/tsukutsuku/front_right_urg.yaml" />
   <node name="load_rear_urg" pkg="dynamic_reconfigure" type="dynparam" args="load rear_urg $(find tunable_static_tf_broadcaster)/params/tsukutsuku/rear_urg.yaml" />
