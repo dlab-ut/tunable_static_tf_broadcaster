@@ -112,4 +112,5 @@
   <node name="load_right_camera" pkg="dynamic_reconfigure" type="dynparam" args="load right_camera $(find tunable_static_tf_broadcaster)/params/tsukutsuku/right_camera.yaml" />
   <node name="load_imu" pkg="dynamic_reconfigure" type="dynparam" args="load imu $(find tunable_static_tf_broadcaster)/params/tsukutsuku/imu.yaml" />
 
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find tunable_static_tf_broadcaster)/tsukutsuku.rviz" />
 </launch>
